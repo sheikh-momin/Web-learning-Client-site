@@ -3,18 +3,22 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import LeftSideNav from './LeftSideNav/LeftSideNav';
+import img from '../../assets/img/logo.jpg'
 
 const Header = () => {
   return (
-    <div>
+    <div className='mb-3'>
       <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
         <Container>
-          <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+          <Navbar.Brand href="#home"><img style={{height:'60px',borderRadius:'50%'}} src={img} alt="" /> Web Learning</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link href="#features">Features</Nav.Link>
-              <Nav.Link href="#pricing">Pricing</Nav.Link>
+            <Nav className="me-auto ms-5">
+              <Nav.Link href="#features">Home</Nav.Link>
+              <Nav.Link href="#pricing">Courses</Nav.Link>
+              <Nav.Link href="#pricing">FAQ</Nav.Link>
+              <Nav.Link href="#pricing">Blog</Nav.Link>
               <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">
@@ -33,6 +37,9 @@ const Header = () => {
                 Dank memes
               </Nav.Link>
             </Nav>
+            <div className='d-lg-none'>
+              <LeftSideNav></LeftSideNav>
+            </div>
           </Navbar.Collapse>
         </Container>
       </Navbar>
