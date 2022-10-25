@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { FaStar, FaEye } from 'react-icons/fa';
 
 const Courses = () => {
   const [categories, setCategories] = useState([]);
@@ -12,7 +13,7 @@ const Courses = () => {
       .then(res => res.json())
       .then(data => setCategories(data))
   }, [])
-  console.log(categories)
+
   return (
     <div className='container '>
     {
@@ -21,7 +22,7 @@ const Courses = () => {
             <Card.Img variant="top" src={course.img} />
             <Card.Body>
               <Card.Title className='mb-3'>{course.title}</Card.Title>
-              <Button variant="primary">Enroll This Course</Button>
+              <Button ><Link className='text-decoration-none text-light fw-semibold m-auto ' to={`/courses/${course.category_id}`} variant="primary">Course Details</Link></Button>
             </Card.Body>
           </Card>
         )

@@ -12,14 +12,14 @@ const Header = () => {
     <div className='mb-3'>
       <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
         <Container>
-          <Navbar.Brand href="#home"><img style={{height:'60px',borderRadius:'50%'}} src={img} alt="" /> Web Learning</Navbar.Brand>
+          <Navbar.Brand className='fw-bold fs-2' href="#home"><img style={{height:'60px',borderRadius:'50%'}} src={img} alt="" /> Web Learning</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="me-auto ms-5">
-              <Link href="#features">Home</Link>
-              <Link href="#pricing">Courses</Link>
-              <Link href="#pricing">FAQ</Link>
-              <Link href="#pricing">Blog</Link>
+            <Nav className="me-auto ms-5 ">
+              <Link className='text-decoration-none text-dark fw-semibold m-auto  me-3' to={'/'}>Home</Link>
+              <Link className='text-decoration-none text-dark fw-semibold  m-auto me-3' to={'/categories'}>Courses</Link>
+              <Link className='text-decoration-none text-dark fw-semibold m-auto  me-3' to={'/faq'}>FAQ</Link>
+              <Link className='text-decoration-none text-dark fw-semibold m-auto  me-3' to={'/blog'}>Blog</Link>
               <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">
