@@ -62,7 +62,7 @@ const Header = () => {
                 {user?.photoURL ? 
                   <Image style={{ height: '25px' }} roundedCircle 
                   src={user?.photoURL}></Image>
-                  : <FaUserCircle style={{ height: '25px' }}></FaUserCircle>
+                  : <FaUserCircle></FaUserCircle>
                     
                 }
               </Nav.Link>
