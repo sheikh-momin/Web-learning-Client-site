@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import LeftSideNav from './LeftSideNav/LeftSideNav';
 import img from '../../assets/img/logo.jpg'
 import { Link } from 'react-router-dom';
@@ -13,9 +13,22 @@ import { FaUserCircle } from "react-icons/fa";
 import Button from 'react-bootstrap/Button';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
+import styled, { ThemeProvider } from "styled-components";
+import { lightTheme, darkTheme, GlobalStyles } from "./Theme";
 
+
+const StyledApp = styled.div`
+  color: ${(props) => props.theme.fontColor};
+`;
 
 const Header = () => {
+  const [theme, setTheme] = useState("light");
+
+
+  const themeToggler = () => {
+    theme === "light" ? setTheme("dark") : setTheme("light");
+  };
+
   const {user, logout}= useContext(AuthContext)
   const handleSignOut =()=>{
     logout()
@@ -34,17 +47,22 @@ const Header = () => {
               <Link className='text-decoration-none text-dark fw-semibold  m-lg-auto me-lg-3' to={'/categories'}>Courses</Link>
               <Link className='text-decoration-none text-dark fw-semibold m-lg-auto  me-lg-3' to={'/faq'}>FAQ</Link>
               <Link className='text-decoration-none text-dark fw-semibold m-lg-auto  me-lg-3' to={'/blog'}>Blog</Link>
-              <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
-                  Another action
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">
-                  Separated link
-                </NavDropdown.Item>
-              </NavDropdown>
+              <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
+                <GlobalStyles />
+                <StyledApp>
+                  <Form>
+                    <Form.Check 
+                      onClick={() => themeToggler()}
+                      type="switch"
+                      id="custom-switch"
+                      label={theme}
+                    />
+                  </Form>
+                </StyledApp>
+              </ThemeProvider>
+              
+              
+              
             </Nav>
             <Nav>
               <Nav.Link href="#deets">
