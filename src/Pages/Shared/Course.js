@@ -14,7 +14,7 @@ const Course = () => {
   }
   const { details, total_view, rating } = allData
   return (
-    <div className='container'>
+    <div className='container '>
       <Card className='mb-5 shadow text-center' key={courseData._id} style={{ width: '100%' }}>
         <Card.Img  variant="top" src={courseData.img} />
         <Card.Body>
@@ -24,11 +24,12 @@ const Course = () => {
             <p><FaEye className='me-2'></FaEye>{total_view}</p>
             <p><FaStar className='text-warning me-2'></FaStar>{rating}</p>
           </div>
-          <Button className='mt-3' onClick={showAllData} variant="primary">Enroll This Course</Button>
+          <Button className='mt-3' onClick={showAllData} variant="warning">Enroll This Course</Button>
         </Card.Body>
       </Card>
     </div>
   );
 };
+
 
 export default Course;

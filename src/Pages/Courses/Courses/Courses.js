@@ -22,7 +22,7 @@ const Courses = () => {
             <Card.Img variant="top" src={course.img} />
             <Card.Body>
               <Card.Title className='mb-3'>{course.title}</Card.Title>
-              <Button ><Link className='text-decoration-none text-light fw-semibold m-auto ' to={`/courses/${course.category_id}`} variant="primary">Course Details</Link></Button>
+              <Button ><Link className='text-decoration-none text-light fw-semibold m-auto ' to={`/courses/${course.category_id}`} variant="warning">Course Details</Link></Button>
             </Card.Body>
           </Card>
         )
