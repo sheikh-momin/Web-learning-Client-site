@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
+
 const LeftSideNav = () => {
   const [categories, setCategories]=useState([]);
   useEffect(()=>{
@@ -18,7 +19,8 @@ const LeftSideNav = () => {
         {
           categories.map(category => <p key={category.id}>
             <Link className='text-decoration-none text-warning fw-semibold m-auto  me-3' to={`/courses/${category.id}`}>{category.name}</Link>
-          </p>)
+          </p>) 
+          
         }
       </div>
     </div>

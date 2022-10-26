@@ -7,6 +7,7 @@ import Faq from "../../Pages/FAQ/Faq";
 import Home from "../../Pages/Home/Home/Home";
 import Course from "../../Pages/Shared/Course";
 import SignIn from "../../SignIn/SignIn";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 
 
@@ -22,11 +23,11 @@ export const routes = createBrowserRouter([
       },
       {
         path:'/categories',
-        element:<Courses></Courses>
+        element: <PrivateRoute><Courses></Courses></PrivateRoute>
       },
       {
         path:'/courses/:id',
-        element:<Course></Course>,
+        element: <PrivateRoute><Course></Course></PrivateRoute>,
         loader: ({ params }) => fetch(`http://localhost:5000/courses/${params.id}`)
       },
       {
@@ -35,7 +36,7 @@ export const routes = createBrowserRouter([
       },
       {
         path: '/blog',
-        element: <Blog></Blog>
+        element: <PrivateRoute><Blog></Blog></PrivateRoute>
       },
       {
         path: '/login',
