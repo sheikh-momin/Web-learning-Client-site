@@ -21,7 +21,7 @@ const Header = () => {
     .catch(error =>console.error(error))
   }
   return (
-    <div className='mb-3'>
+    <div className=''>
       <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
         <Container>
           <Navbar.Brand className='fw-bold fs-2 mt-1' href="#home"><img style={{ height: '60px', borderRadius: '50%' }} src={img} alt="" /><span className='text-light bg-warning rounded ms-2'> Web </span>Learning</Navbar.Brand>

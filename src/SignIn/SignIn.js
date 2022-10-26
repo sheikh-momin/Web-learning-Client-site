@@ -1,5 +1,5 @@
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
-import React from 'react';
+import React, { useState } from 'react';
 import { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthProvider/AuthProvider';
 
 const SignIn = () => {
+  const [error, setError] = useState('')
   const { googleSignIn, githubSignIn, createUser }=useContext(AuthContext)
 
   const googleProvider= new GoogleAuthProvider()
@@ -40,9 +41,13 @@ const SignIn = () => {
       .then(result => {
         const user = result.user
         console.log(user)
+        setError('')
         form.reset()
       })
-      .catch(error => console.error(error))
+      .catch(error => {
+        console.error(error)
+        setError(error.message)
+      })
   }
 
   return (
@@ -71,7 +76,7 @@ const SignIn = () => {
           <Link to='/login'><p className='mt-2'>You already have an account?Then Log In!</p></Link>
         </div>
         <Form.Text className='text-danger'>
-
+          {error}
         </Form.Text>
         <div className='mt-3 d-flex justify-content-center'>
           <Button className='me-3' onClick={handleGoogleSignIn} variant="outline-success"><FaGoogle className='me-2'></FaGoogle>Log in With Google</Button>

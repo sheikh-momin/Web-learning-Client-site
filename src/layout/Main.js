@@ -6,13 +6,13 @@ import LeftSideNav from '../Pages/Shared/LeftSideNav/LeftSideNav';
 
 const Main = () => {
   return (
-    <div>
+    <div >
     <Header></Header>
       <Container>
         <Row>
-          <Col lg="2" className='d-none d-lg-block bg-secondary rounded h-50'><LeftSideNav></LeftSideNav></Col>
+          <Col lg="2" className='d-none d-lg-block bg-secondary rounded shadow-lg h-50'><LeftSideNav></LeftSideNav></Col>
           <Col lg="8" className='ms-3'>
-            <Outlet></Outlet>
+            <Outlet ></Outlet>
           </Col>
         </Row>
       </Container>

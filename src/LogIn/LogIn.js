@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState } from 'react';
 import { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -8,6 +9,7 @@ import { AuthContext } from '../Context/AuthProvider/AuthProvider';
 
 
 const LogIn = () => {
+  const [error, setError] = useState('')
   const { signIn } =useContext(AuthContext)
   const navigate = useNavigate()
 
@@ -21,9 +23,13 @@ const LogIn = () => {
         const user = result.user
         console.log(user)
         form.reset()
+        setError('')
         navigate('/')
       })
-      .catch(error => console.error(error))
+      .catch(error => {
+        console.error(error)
+        setError(error.message)
+      })
 
   }
   return (
@@ -46,6 +52,9 @@ const LogIn = () => {
           </Button>
           <Link to='/signin'><p className='mt-2'>You have no account?Then Sign In!</p></Link>
         </div>
+        <Form.Text className='text-danger  '>
+          {error}
+        </Form.Text>
         
       </Form>
     </div>

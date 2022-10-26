@@ -12,7 +12,7 @@ const LeftSideNav = () => {
   },[])
   
   return (
-    <div>
+    <div >
       <h4 className='text-light bold mb-3'>Course item: {categories.length}</h4>
       <div>
         {
