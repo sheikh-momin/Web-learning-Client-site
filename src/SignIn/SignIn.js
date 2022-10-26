@@ -8,8 +8,10 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthProvider/AuthProvider';
 
 const SignIn = () => {
+
   const [error, setError] = useState('')
-  const { googleSignIn, githubSignIn, createUser }=useContext(AuthContext)
+  const { googleSignIn, githubSignIn, createUser,user }=useContext(AuthContext)
+  const [name , setName] = useState(user.displayName)
 
   const googleProvider= new GoogleAuthProvider()
   const handleGoogleSignIn=()=>{
@@ -26,6 +28,7 @@ const SignIn = () => {
     githubSignIn(githubProvider)
     .then(result=>{
       const user = result.user
+      console.log(user)
     })
     .catch(error => console.error(error))
   }
@@ -55,7 +58,7 @@ const SignIn = () => {
       <Form onSubmit={handleSubmit}> 
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Your Name</Form.Label>
-          <Form.Control name='name' type="text" placeholder="Enter email" />
+          <Form.Control  name='name' type="text" placeholder="Enter email" />
           
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicEmail">
