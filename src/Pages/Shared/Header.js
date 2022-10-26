@@ -11,6 +11,8 @@ import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import { Image } from 'react-bootstrap';
 import { FaUserCircle } from "react-icons/fa";
 import Button from 'react-bootstrap/Button';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
 
 
 const Header = () => {
@@ -58,11 +60,17 @@ const Header = () => {
               </div>
               }
               </Nav.Link>
-              <Nav.Link eventKey={2} href="#memes">
+              <Nav.Link className='mt-1'  eventKey={2} href="#memes">
                 {user?.photoURL ? 
-                  <Image style={{ height: '25px' }} roundedCircle 
-                  src={user?.photoURL}></Image>
-                  : <FaUserCircle></FaUserCircle>
+                    <OverlayTrigger overlay={<Tooltip id="tooltip-disabled">{user.displayName}</Tooltip>}>
+                      <span className="d-inline-block">
+                      <Image style={{ height: '25px' }} roundedCircle
+                        src={user?.photoURL}></Image>
+                      </span>
+                    </OverlayTrigger>
+                        : 
+                        <FaUserCircle></FaUserCircle>
+                    
                     
                 }
               </Nav.Link>
