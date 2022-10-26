@@ -1,4 +1,4 @@
-import { GoogleAuthProvider } from 'firebase/auth';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import React from 'react';
 import { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
@@ -7,7 +7,7 @@ import { FaGithub, FaGoogle } from "react-icons/fa";
 import { AuthContext } from '../Context/AuthProvider/AuthProvider';
 
 const SignIn = () => {
-  const { googleSignIn }=useContext(AuthContext)
+  const { googleSignIn, githubSignIn }=useContext(AuthContext)
 
   const googleProvider= new GoogleAuthProvider()
   const handleGoogleSignIn=()=>{
@@ -18,6 +18,17 @@ const SignIn = () => {
     })
     .catch(error=> console.error(error))
   }
+
+  const githubProvider = new GithubAuthProvider()
+  const handleGithubSignIN =() =>{
+    githubSignIn(githubProvider)
+    .then(result=>{
+      const user = result.user
+      console.log(user)
+    })
+    .catch(error => console.error(error))
+  }
+
   return (
     <div className='container'>
       <Form>
@@ -37,7 +48,7 @@ const SignIn = () => {
         </Button>
         <div className='mt-3 d-flex justify-content-center'>
           <Button className='me-3' onClick={handleGoogleSignIn} variant="outline-success"><FaGoogle className='me-2'></FaGoogle>Log in With Google</Button>
-          <Button variant="outline-secondary"><FaGithub className='me-2'></FaGithub>Log in with Github</Button>
+          <Button onClick={handleGithubSignIN} variant="outline-secondary"><FaGithub className='me-2'></FaGithub>Log in with Github</Button>
         </div>
       </Form>
     </div>

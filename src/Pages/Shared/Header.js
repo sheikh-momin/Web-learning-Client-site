@@ -10,11 +10,16 @@ import { useContext } from 'react';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import { Image } from 'react-bootstrap';
 import { FaUserCircle } from "react-icons/fa";
+import Button from 'react-bootstrap/Button';
 
 
 const Header = () => {
-  const {user}= useContext(AuthContext)
-  console.log(user)
+  const {user, logout}= useContext(AuthContext)
+  const handleSignOut =()=>{
+    logout()
+    .then(()=>{})
+    .catch(error =>console.error(error))
+  }
   return (
     <div className='mb-3'>
       <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
@@ -40,13 +45,23 @@ const Header = () => {
               </NavDropdown>
             </Nav>
             <Nav>
-              <Link className='text-decoration-none text-danger fw-semibold m-lg-auto  me-lg-3' to='/login'>Log In</Link>
-              <Link className='text-decoration-none text-success fw-semibold m-lg-auto  me-lg-3' to='/signin'>Sign In</Link>
-              <Nav.Link href="#deets">{user?.displayName}</Nav.Link>
+              <Nav.Link href="#deets">
+              {user?.uid ? 
+              <div>
+                    <Link onClick={handleSignOut} className='text-decoration-none  fw-semibold m-lg-auto  me-lg-3' to='/login'><Button variant='outline-danger'>Log Out</Button></Link>
+                    <span>{user?.displayName}</span>
+              </div>
+              :
+              <div>
+                    <Link className='text-decoration-none text-success fw-semibold m-lg-auto  me-lg-3' to='/login'><Button variant="outline-success">Log In</Button></Link>
+                    <Link className='text-decoration-none text-success fw-semibold m-lg-auto  me-lg-3' to='/signin'> <Button variant="outline-secondary">Sign In</Button></Link>
+              </div>
+              }
+              </Nav.Link>
               <Nav.Link eventKey={2} href="#memes">
-                {user.photoURL ? 
+                {user?.photoURL ? 
                   <Image style={{ height: '25px' }} roundedCircle 
-                  src={user.photoURL}></Image>
+                  src={user?.photoURL}></Image>
                   : <FaUserCircle style={{ height: '25px' }}></FaUserCircle>
                     
                 }
