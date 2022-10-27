@@ -9,6 +9,7 @@ Live Site: https://web-learning-7d5e0.web.app/categories
 6. Theme
 7. Private-Route
 8. Login with email-password, google, github
+9. Create server side fake data
 
 
 
