@@ -9,7 +9,7 @@ import { FaStar, FaEye } from 'react-icons/fa';
 const Courses = () => {
   const [categories, setCategories] = useState([]);
   useEffect(() => {
-    fetch('http://localhost:5000/categories')
+    fetch('https://web-learning-server.vercel.app/categories')
       .then(res => res.json())
       .then(data => setCategories(data))
   }, [])

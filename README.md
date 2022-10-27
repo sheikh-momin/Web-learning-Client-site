@@ -1,3 +1,29 @@
+Website Name: Web Learning
+Live Site: https://web-learning-7d5e0.web.app/categories
+
+1. React-Bootstrap
+2. React-Router
+3. React-context
+4. Firebase-Authentication
+5. React-Icon
+6. Theme
+7. Private-Route
+8. Login with email-password, google, github
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
