@@ -39,13 +39,13 @@ const Header = () => {
     <div className=''>
       <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
         <Container>
-          <Navbar.Brand className='fw-bold fs-2 mt-1' href="#home"><img style={{ height: '60px', borderRadius: '50%' }} src={img} alt="" /><span className='text-light bg-warning rounded ms-2'> Web </span>Learning</Navbar.Brand>
+          <Link className='text-decoration-none' to='/'><Navbar.Brand className='fw-bold fs-2 mt-1' href="#home"><img style={{ height: '60px', borderRadius: '50%' }} src={img} alt="" /><span className='text-light bg-warning rounded ms-2'> Web </span>Learning</Navbar.Brand></Link>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto ms-5 ">
               <Link className='text-decoration-none text-dark fw-semibold m-lg-auto  me-lg-3' to={'/'}>Home</Link>
               <Link className='text-decoration-none text-dark fw-semibold  m-lg-auto me-lg-3' to={'/categories'}>Courses</Link>
-              <Link className='text-decoration-none text-dark fw-semibold m-lg-auto  me-lg-3' to={'/faq'}>FAQ</Link>
+              
               <Link className='text-decoration-none text-dark fw-semibold m-lg-auto  me-lg-3' to={'/blog'}>Blog</Link>
               <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
                 <GlobalStyles />
@@ -69,7 +69,7 @@ const Header = () => {
               {user?.uid ? 
               <div>
                     <Link onClick={handleSignOut} className='text-decoration-none  fw-semibold m-lg-auto  me-lg-3' to='/login'><Button variant='outline-danger'>Log Out</Button></Link>
-                    <span>{user?.displayName}</span>
+                    
               </div>
               :
               <div>

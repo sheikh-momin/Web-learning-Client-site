@@ -10,8 +10,8 @@ import { AuthContext } from '../Context/AuthProvider/AuthProvider';
 const SignIn = () => {
 
   const [error, setError] = useState('')
-  const { googleSignIn, githubSignIn, createUser,user }=useContext(AuthContext)
-  const [name , setName] = useState(user.displayName)
+  const { googleSignIn, githubSignIn, createUser, }=useContext(AuthContext)
+  
 
   const googleProvider= new GoogleAuthProvider()
   const handleGoogleSignIn=()=>{
@@ -37,6 +37,7 @@ const SignIn = () => {
     event.preventDefault()
     const form =event.target;
     const name =form.name.value;
+    const photoURL =form.photoURL.value;
     const email =form.email.value;
     const password =form.password.value;
 
@@ -57,13 +58,18 @@ const SignIn = () => {
     <div className='container'>
       <Form onSubmit={handleSubmit}> 
         <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Your Name</Form.Label>
-          <Form.Control  name='name' type="text" placeholder="Enter email" />
+          <Form.Label>Full Name</Form.Label>
+          <Form.Control  name='name' type="text" placeholder="Enter Name" />
+          
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label>PhotoURL</Form.Label>
+          <Form.Control  name='photoURL' type="text" placeholder="Enter PhotoURL" />
           
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
-          <Form.Control name='email' type="email" placeholder="Enter email" required/>
+          <Form.Control name='email' type="email" placeholder="Enter Email" required/>
           
         </Form.Group>
 
